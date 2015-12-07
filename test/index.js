@@ -17,9 +17,14 @@ test('No modules', function (t) {
 
   vnode = h('div', [
     h('p', 'Paragraph 1'),
-    h('p', [h('img')])
+    h('p', [h('img')]),
+    h('ul', [
+      h('li', '1'),
+      h('li', '2'),
+      h('li', '3')
+    ])
   ])
-  t.equal(renderToString(vnode), '<div><p>Paragraph 1</p><p><img></p></div>')
+  t.equal(renderToString(vnode), '<div><p>Paragraph 1</p><p><img></p><ul><li>1</li><li>2</li><li>3</li></ul></div>')
 
   t.end()
 })
