@@ -15,13 +15,13 @@ exports.init = function init (modules) {
   }
 
   return function renderToString (vnode) {
-    var tagName = parseSelector(vnode.sel).tagName
-    var attributes = parse(vnode)
-    var tag = []
-
     if (!vnode.sel && vnode.text) {
       return vnode.text
     }
+
+    var tagName = parseSelector(vnode.sel).tagName
+    var attributes = parse(vnode)
+    var tag = []
 
     // Open tag
     tag.push('<' + tagName)

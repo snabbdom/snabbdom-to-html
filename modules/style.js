@@ -13,5 +13,5 @@ module.exports = function style (vnode) {
     result.push(`${kebabCase(key)}: ${escape(value)}`)
   })
 
-  return `style="${result.join('; ')}"`
+  return result.length ? `style="${result.join('; ')}"` : ''
 }
