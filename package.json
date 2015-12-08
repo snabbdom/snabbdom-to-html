@@ -1,13 +1,27 @@
 {
-  "name": "snabbdom-server",
+  "name": "snabbdom-to-html",
   "version": "1.0.0",
-  "description": "Render snabbdom vnodes to an HTML string",
+  "description": "Render Snabbdom Vnodes to HTML strings",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acstll/snabbdom-to-html.git"
+  },
+  "keywords": [
+    "virtual",
+    "dom",
+    "html",
+    "snabbdom"
+  ],
+  "author": "acstll",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acstll/snabbdom-to-html/issues"
+  },
+  "homepage": "https://github.com/acstll/snabbdom-to-html#readme",
   "dependencies": {
     "browser-split": "0.0.1",
     "lodash.escape": "^3.0.0",
