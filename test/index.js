@@ -112,10 +112,10 @@ test('Modules', function (t) {
       htmlFor: 'beep'
     }
   }, [
-    'Edge case',
+    'Edge case ',
     h('input', { attrs: { type: 'text', value: 'Shit' } })
   ])
-  t.equal(renderToString(vnode), '<label for="beep">Edge case<input type="text" value="Shit"></label>', 'htmlFor, nested tag and text together')
+  t.equal(renderToString(vnode), '<label for="beep">Edge case <input type="text" value="Shit"></label>', 'htmlFor, nested tag and text together')
 
   // className
 
