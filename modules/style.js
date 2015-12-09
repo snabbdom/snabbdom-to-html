@@ -6,12 +6,11 @@ var kebabCase = require('lodash.kebabcase')
 // data.style
 
 module.exports = function style (vnode) {
-  var styles = vnode.data.style
-  var result = []
+  var styles = []
 
-  forOwn(styles, function (value, key) {
-    result.push(`${kebabCase(key)}: ${escape(value)}`)
+  forOwn(vnode.data.style, function (value, key) {
+    styles.push(`${kebabCase(key)}: ${escape(value)}`)
   })
 
-  return result.length ? `style="${result.join('; ')}"` : ''
+  return styles.length ? `style="${styles.join('; ')}"` : ''
 }
