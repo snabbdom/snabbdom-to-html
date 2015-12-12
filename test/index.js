@@ -1,6 +1,15 @@
+
 var test = require('tape')
 var h = require('snabbdom/h')
-var init = require('../').init
+var toHTML = require('../')
+var init = require('../init')
+
+test('Main export', function (t) {
+  t.equal(typeof toHTML, 'function', 'is function')
+  t.equal(toHTML(h('i', { props: { title: 'Italics' } }, ':-)')), '<i title="Italics">:-)</i>', 'and it works')
+
+  t.end()
+})
 
 test('No modules', function (t) {
   var vnode
