@@ -1,6 +1,6 @@
 
 var parseSelector = require('./parse-selector')
-var VOID_TAGS = require('./void-tags')
+var VOID_ELEMENTS = require('./void-elements')
 var CONTAINER_ELEMENTS = require('./container-elements')
 
 module.exports = function init (modules) {
@@ -36,7 +36,7 @@ module.exports = function init (modules) {
     tag.push('>')
 
     // Close tag, if needed
-    if ((VOID_TAGS[tagName] !== true && !svg) ||
+    if ((VOID_ELEMENTS[tagName] !== true && !svg) ||
         (svg && CONTAINER_ELEMENTS[tagName] === true)) {
       if (vnode.text) {
         tag.push(vnode.text)
