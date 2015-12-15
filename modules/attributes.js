@@ -1,7 +1,6 @@
 
 var forOwn = require('lodash.forown')
 var escape = require('lodash.escape')
-var kebabCase = require('lodash.kebabcase')
 var union = require('lodash.union')
 
 var parseSelector = require('../parse-selector')
@@ -39,7 +38,6 @@ module.exports = function attributes (vnode) {
   }
 
   forOwn(values, function (value, key) {
-    key = kebabCase(key)
     attributes.push(value === true ? key : `${key}="${escape(value)}"`)
   })
 

@@ -1,6 +1,7 @@
 
 var parseSelector = require('./parse-selector')
 var VOID_TAGS = require('./void-tags')
+var CONTAINER_ELEMENTS = require('./container-elements')
 
 module.exports = function init (modules) {
   function parse (data) {
@@ -21,6 +22,7 @@ module.exports = function init (modules) {
 
     var tagName = parseSelector(vnode.sel).tagName
     var attributes = parse(vnode)
+    var svg = vnode.data.ns === 'http://www.w3.org/2000/svg'
     var tag = []
 
     // Open tag
@@ -28,10 +30,14 @@ module.exports = function init (modules) {
     if (attributes.length) {
       tag.push(' ' + attributes.join(' '))
     }
+    if (svg && CONTAINER_ELEMENTS[tagName] !== true) {
+      tag.push(' /')
+    }
     tag.push('>')
 
     // Close tag, if needed
-    if (VOID_TAGS[tagName.toUpperCase()] !== true) {
+    if ((VOID_TAGS[tagName] !== true && !svg) ||
+        (svg && CONTAINER_ELEMENTS[tagName] === true)) {
       if (vnode.text) {
         tag.push(vnode.text)
       } else if (vnode.children) {

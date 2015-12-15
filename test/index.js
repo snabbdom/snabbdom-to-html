@@ -40,6 +40,7 @@ test('No modules', function (t) {
 
 test('Modules', function (t) {
   var vnode
+  var html
   var renderToString = init([
     require('../modules/attributes'),
     require('../modules/style')
@@ -115,6 +116,37 @@ test('Modules', function (t) {
     }
   }, 'Github')
   t.equal(renderToString(vnode), '<a id="overridden" href="http://github.com">Github</a>', 'attrs 3, id override')
+
+  html =
+    '<svg width="92" height="38" viewBox="0 0 92 38" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
+      '<title>Balls</title>' +
+      '<g fill="none" fill-rule="evenodd" stroke="#979797" stroke-width="3">' +
+        '<circle cx="19" cy="19" r="17" /><circle cx="73" cy="19" r="17" />' +
+      '</g>' +
+    '</svg>'
+  vnode = h('svg', {
+    props: {
+      width: '92',
+      height: '38',
+      viewBox: '0 0 92 38',
+      xmlns: 'http://www.w3.org/2000/svg',
+      'xmlns:xlink': 'http://www.w3.org/1999/xlink'
+    }
+  }, [
+    h('title', 'Balls'),
+    h('g', {
+      props: {
+        fill: 'none',
+        'fill-rule': 'evenodd',
+        stroke: '#979797',
+        'stroke-width': 3
+      }
+    }, [
+      h('circle', { props: { cx: '19', cy: '19', r: '17' } }),
+      h('circle', { props: { cx: '73', cy: '19', r: '17' } })
+    ])
+  ])
+  t.equal(renderToString(vnode), html, 'svg')
 
   vnode = h('label', {
     attrs: {

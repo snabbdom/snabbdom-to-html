@@ -1,18 +1,20 @@
 
+// http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
+
 module.exports = {
-  AREA: true,
-  BASE: true,
-  BR: true,
-  COL: true,
-  EMBED: true,
-  HR: true,
-  IMG: true,
-  INPUT: true,
-  KEYGEN: true,
-  LINK: true,
-  META: true,
-  PARAM: true,
-  SOURCE: true,
-  TRACK: true,
-  WBR: true
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
 }
