@@ -201,3 +201,14 @@ test('Modules', function (t) {
 
   t.end()
 })
+
+test('Protect against `data` being undefined', function (t) {
+  var vnode = h('div')
+  vnode.data = undefined
+
+  t.doesNotThrow(function () {
+    return toHTML(vnode)
+  })
+
+  t.end()
+})

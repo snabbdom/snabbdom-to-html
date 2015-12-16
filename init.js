@@ -20,6 +20,8 @@ module.exports = function init (modules) {
       return vnode.text
     }
 
+    vnode.data = vnode.data || {}
+
     var tagName = parseSelector(vnode.sel).tagName
     var attributes = parse(vnode)
     var svg = vnode.data.ns === 'http://www.w3.org/2000/svg'
