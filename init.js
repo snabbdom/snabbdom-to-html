@@ -24,7 +24,7 @@ module.exports = function init (modules) {
 
     // Support thunks
     if (typeof vnode.sel === 'string' && vnode.sel.slice(0, 5) === 'thunk') {
-      vnode = vnode.data.fn(vnode.data.args)
+      vnode = vnode.data.fn.apply(null, vnode.data.args)
     }
 
     var tagName = parseSelector(vnode.sel).tagName
