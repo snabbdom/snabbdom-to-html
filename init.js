@@ -22,6 +22,11 @@ module.exports = function init (modules) {
 
     vnode.data = vnode.data || {}
 
+    // Support thunks
+    if (typeof vnode.sel === 'string' && vnode.sel.slice(0, 5) === 'thunk') {
+      vnode = vnode.data.fn(vnode.data.args)
+    }
+
     var tagName = parseSelector(vnode.sel).tagName
     var attributes = parse(vnode)
     var svg = vnode.data.ns === 'http://www.w3.org/2000/svg'
