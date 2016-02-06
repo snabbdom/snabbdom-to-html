@@ -7,9 +7,18 @@ var kebabCase = require('lodash.kebabcase')
 
 module.exports = function style (vnode) {
   var styles = []
+  var style = vnode.data.style || {}
 
-  forOwn(vnode.data.style, function (value, key) {
-    styles.push(`${kebabCase(key)}: ${escape(value)}`)
+  // merge in `delayed` properties
+  if (style.delayed) {
+    Object.assign(style, style.delayed)
+  }
+
+  forOwn(style, function (value, key) {
+    // omit hook objects
+    if (typeof value === 'string') {
+      styles.push(`${kebabCase(key)}: ${escape(value)}`)
+    }
   })
 
   return styles.length ? `style="${styles.join('; ')}"` : ''

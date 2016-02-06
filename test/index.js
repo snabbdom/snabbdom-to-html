@@ -64,6 +64,25 @@ test('Modules', function (t) {
   })
   t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em"></div>', 'style 2')
 
+    // `delayed` and hook properties
+
+  vnode = h('div', {
+    style: {
+      fontSize: '100%',
+      color: 'blue',
+      delayed: {
+        color: 'white'
+      },
+      remove: {
+        color: 'black'
+      },
+      destroy: {
+        color: 'cyan'
+      }
+    }
+  })
+  t.equal(renderToString(vnode), '<div style="font-size: 100%; color: white"></div>', 'style 3')
+
   // props
 
   vnode = h('a', {
