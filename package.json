@@ -6,7 +6,8 @@
   "browser": "lib",
   "scripts": {
     "test": "tape test/*.js",
-    "build": "babel src/ -d lib/"
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
