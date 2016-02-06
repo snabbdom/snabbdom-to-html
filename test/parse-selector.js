@@ -1,6 +1,6 @@
 
 var test = require('tape')
-var parseSelector = require('../parse-selector')
+var parseSelector = require('../src/parse-selector')
 
 test('Parse selector helper', function (t) {
   var result

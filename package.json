@@ -2,9 +2,11 @@
   "name": "snabbdom-to-html",
   "version": "2.0.1",
   "description": "Render Snabbdom Vnodes to HTML strings",
-  "main": "index.js",
+  "main": "src",
+  "browser": "lib",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "build": "babel src/ -d lib/"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,9 @@
     "lodash.union": "^3.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.3.13",
     "snabbdom": "^0.2.8",
     "standard": "^5.4.1",
     "tape": "^4.2.2"
