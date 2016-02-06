@@ -1,6 +1,7 @@
 
 var test = require('tape')
 var h = require('snabbdom/h')
+var thunk = require('snabbdom/thunk')
 var toHTML = require('../src')
 var init = require('../src/init')
 
@@ -209,6 +210,19 @@ test('Protect against `data` being undefined', function (t) {
   t.doesNotThrow(function () {
     return toHTML(vnode)
   })
+
+  t.end()
+})
+
+test('Support thunks', function (t) {
+  var tree = h('div', [
+    thunk('numbers', view, 1, 2, 3)
+  ])
+  function view (x, y, z) {
+    return h('h1#magic', `${x}, ${y}, ${z}`)
+  }
+
+  t.equal(toHTML(tree), '<div><h1 id="magic">1, 2, 3</h1></div>')
 
   t.end()
 })
