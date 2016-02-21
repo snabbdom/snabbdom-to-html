@@ -3,7 +3,7 @@
   "version": "2.1.2",
   "description": "Render Snabbdom Vnodes to HTML strings",
   "main": "src",
-  "browser": "lib",
+  "browser": "lib/",
   "scripts": {
     "test": "tape test/*.js",
     "build": "babel src/ -d lib/"
