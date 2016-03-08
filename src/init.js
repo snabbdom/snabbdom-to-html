@@ -45,7 +45,9 @@ module.exports = function init (modules) {
     // Close tag, if needed
     if ((VOID_ELEMENTS[tagName] !== true && !svg) ||
         (svg && CONTAINER_ELEMENTS[tagName] === true)) {
-      if (vnode.text) {
+      if (vnode.data && vnode.data.props && vnode.data.props.innerHTML) {
+        tag.push(vnode.data.props.innerHTML)
+      } else if (vnode.text) {
         tag.push(vnode.text)
       } else if (vnode.children) {
         vnode.children.forEach(function (child) {
