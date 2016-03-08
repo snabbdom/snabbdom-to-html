@@ -54,6 +54,9 @@ function setAttributes (values, target) {
       target['class'] = value.split(' ')
       return
     }
+    if (key === 'innerHTML') {
+      return;
+    }
     target[key] = value
   })
 }
