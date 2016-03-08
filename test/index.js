@@ -110,6 +110,15 @@ test('Modules', function (t) {
   }, 'Github')
   t.equal(renderToString(vnode), '<a id="overridden" href="http://github.com">Github</a>', 'props 3, id override')
 
+  vnode = h('a#github', {
+    props: {
+      innerHTML: '<strong>Github</strong>',
+      href: 'http://github.com',
+      target: '_blank'
+    }
+  }, 'Github')
+  t.equal(renderToString(vnode), '<a id="github" href="http://github.com" target="_blank"><strong>Github</strong></a>', 'props 4, innerHTML')
+
   // attrs
 
   vnode = h('a', {
