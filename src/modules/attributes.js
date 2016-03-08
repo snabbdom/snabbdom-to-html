@@ -55,7 +55,7 @@ function setAttributes (values, target) {
       return
     }
     if (key === 'innerHTML') {
-      return;
+      return
     }
     target[key] = value
   })
