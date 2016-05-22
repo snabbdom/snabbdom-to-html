@@ -31,7 +31,7 @@ module.exports = function attributes (vnode) {
       classes.push(key)
     }
   })
-  classes = union(classes, values.class, parsedClasses).filter(x => x !== '')
+  classes = union(classes, values.class && [values.class], parsedClasses).filter(x => x !== '')
 
   if (classes.length) {
     values.class = classes.join(' ')
