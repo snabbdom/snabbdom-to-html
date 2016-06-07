@@ -1,5 +1,5 @@
 
-var parseSelector = require('./parse-selector')
+var parseSelector = require('parse-sel')
 var VOID_ELEMENTS = require('./void-elements')
 var CONTAINER_ELEMENTS = require('./container-elements')
 

@@ -3,7 +3,7 @@ var forOwn = require('lodash.forown')
 var escape = require('lodash.escape')
 var union = require('lodash.union')
 
-var parseSelector = require('../parse-selector')
+var parseSelector = require('parse-sel')
 
 // data.attrs, data.props, data.class
 
