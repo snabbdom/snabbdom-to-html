@@ -59,10 +59,11 @@ test('Modules', function (t) {
   vnode = h('div', {
     style: {
       color: 'red',
-      fontSize: '2em'
+      fontSize: '2em',
+      lineHeight: 1.3
     }
   })
-  t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em"></div>', 'style 2')
+  t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em; line-height: 1.3"></div>', 'style 2')
 
     // `delayed` and hook properties
 
