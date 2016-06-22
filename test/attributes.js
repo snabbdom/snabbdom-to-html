@@ -34,6 +34,7 @@ test('Attributes helper', function (t) {
   t.throws(setFn(function () {}), 'throws with function as value')
   t.throws(setFn({}), 'throws with object as value')
   t.throws(setFn(null), 'throws with null as value')
+  t.throws(setFn([]), 'throws with array as value')
 
   function setFn (value) {
     return function () {

@@ -36,10 +36,10 @@ module.exports = function createAttributes () {
       }
       return
     }
-    if (typeof value === 'object' || typeof value === 'function') {
+    if (typeof value !== 'string' && typeof value !== 'number') {
       throw new TypeError(
-        'Only strings, numbers or arrays are allowed. ' +
-        'Tried to set `' + key + '` to null, object or function.'
+        'Only strings and numbers are allowed for values. ' +
+        'Tried to set `' + key + '` to ' + typeof value + '.'
       )
     }
     _attributes.push(item)
