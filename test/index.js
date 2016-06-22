@@ -132,7 +132,7 @@ test('Modules', function (t) {
 
   vnode = h('a#github', {
     attrs: {
-      className: 'a b',
+      class: 'a b',
       href: 'http://github.com',
       target: '_blank'
     }
@@ -179,7 +179,7 @@ test('Modules', function (t) {
   t.equal(renderToString(vnode), html, 'svg')
 
   vnode = h('label', {
-    attrs: {
+    props: {
       htmlFor: 'beep'
     }
   }, [
@@ -188,7 +188,7 @@ test('Modules', function (t) {
   ])
   t.equal(renderToString(vnode), '<label for="beep">Edge case <input type="text" value="Shit"></label>', 'htmlFor, nested tag and text together')
 
-  // className
+  // class
 
   vnode = h('p', {
     class: {
@@ -198,31 +198,20 @@ test('Modules', function (t) {
   }, 'Text')
   t.equal(renderToString(vnode), '<p class="yes">Text</p>', 'class 1')
 
-  vnode = h('p.yes.sure', {
+  vnode = h('p.yes.no', {
     class: {
       yes: true,
       no: false
     }
   }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes sure">Text</p>', 'class 2, dupes 1')
+  t.equal(renderToString(vnode), '<p class="yes">Text</p>', 'class 2')
 
-  vnode = h('p.yes.sure', {
-    class: {
-      yes: true,
-      no: false
-    },
+  vnode = h('p.yes.no', {
     attrs: {
-      className: 'no extra'
+      className: 'yes another'
     }
   }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes sure">Text</p>', 'class 3, dupes 2')
-
-  vnode = h('p.yes.sure', {
-    attrs: {
-      className: 'yes extra'
-    }
-  }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes extra sure">Text</p>', 'class 4, dupes 3')
+  t.equal(renderToString(vnode), '<p class="yes another">Text</p>', 'class 3')
 
   // altogether "randomly"
 
