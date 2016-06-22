@@ -16,7 +16,7 @@ module.exports = function style (vnode) {
 
   forOwn(style, function (value, key) {
     // omit hook objects
-    if (typeof value === 'string') {
+    if (typeof value === 'string' || typeof value === 'number') {
       styles.push(`${kebabCase(key)}: ${escape(value)}`)
     }
   })
