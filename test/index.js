@@ -43,6 +43,8 @@ test('Modules', function (t) {
   var vnode
   var html
   var renderToString = init([
+    require('../src/modules/class'),
+    require('../src/modules/props'),
     require('../src/modules/attributes'),
     require('../src/modules/style')
   ])
@@ -59,10 +61,11 @@ test('Modules', function (t) {
   vnode = h('div', {
     style: {
       color: 'red',
-      fontSize: '2em'
+      fontSize: '2em',
+      lineHeight: 1.3
     }
   })
-  t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em"></div>', 'style 2')
+  t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em; line-height: 1.3"></div>', 'style 2')
 
     // `delayed` and hook properties
 
@@ -131,7 +134,7 @@ test('Modules', function (t) {
 
   vnode = h('a#github', {
     attrs: {
-      className: 'a b',
+      class: 'a b',
       href: 'http://github.com',
       target: '_blank'
     }
@@ -154,7 +157,7 @@ test('Modules', function (t) {
       '</g>' +
     '</svg>'
   vnode = h('svg', {
-    props: {
+    attrs: {
       width: '92',
       height: '38',
       viewBox: '0 0 92 38',
@@ -164,7 +167,7 @@ test('Modules', function (t) {
   }, [
     h('title', 'Balls'),
     h('g', {
-      props: {
+      attrs: {
         fill: 'none',
         'fill-rule': 'evenodd',
         stroke: '#979797',
@@ -178,7 +181,7 @@ test('Modules', function (t) {
   t.equal(renderToString(vnode), html, 'svg')
 
   vnode = h('label', {
-    attrs: {
+    props: {
       htmlFor: 'beep'
     }
   }, [
@@ -187,7 +190,7 @@ test('Modules', function (t) {
   ])
   t.equal(renderToString(vnode), '<label for="beep">Edge case <input type="text" value="Shit"></label>', 'htmlFor, nested tag and text together')
 
-  // className
+  // class
 
   vnode = h('p', {
     class: {
@@ -197,36 +200,25 @@ test('Modules', function (t) {
   }, 'Text')
   t.equal(renderToString(vnode), '<p class="yes">Text</p>', 'class 1')
 
-  vnode = h('p.yes.sure', {
+  vnode = h('p.yes.no', {
     class: {
       yes: true,
       no: false
     }
   }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes sure">Text</p>', 'class 2, dupes 1')
+  t.equal(renderToString(vnode), '<p class="yes">Text</p>', 'class 2')
 
-  vnode = h('p.yes.sure', {
-    class: {
-      yes: true,
-      no: false
-    },
+  vnode = h('p.yes.no', {
     attrs: {
-      className: 'no extra'
+      class: 'yes another'
     }
   }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes sure">Text</p>', 'class 3, dupes 2')
-
-  vnode = h('p.yes.sure', {
-    attrs: {
-      className: 'yes extra'
-    }
-  }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes extra sure">Text</p>', 'class 4, dupes 3')
+  t.equal(renderToString(vnode), '<p class="yes another">Text</p>', 'class 3')
 
   // altogether "randomly"
 
   vnode = h('h1#happy.regular', { props: { title: 'Cheers' } }, 'Happy Birthday')
-  t.equal(renderToString(vnode), '<h1 id="happy" title="Cheers" class="regular">Happy Birthday</h1>', 'altogether')
+  t.equal(renderToString(vnode), '<h1 id="happy" class="regular" title="Cheers">Happy Birthday</h1>', 'altogether')
 
   t.end()
 })
