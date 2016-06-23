@@ -34,8 +34,10 @@ module.exports = function init (modules) {
     vnode.data = vnode.data || {}
 
     // Support thunks
-    if (typeof vnode.sel === 'string' && vnode.sel.slice(0, 5) === 'thunk') {
-      vnode = vnode.data.fn.apply(null, vnode.data.args)
+    if (vnode.data.hook &&
+      typeof vnode.data.hook.init === 'function' &&
+      typeof vnode.data.fn === 'function') {
+      vnode.data.hook.init(vnode)
     }
 
     var node = parseSelector(vnode.sel)

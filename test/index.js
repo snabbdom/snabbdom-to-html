@@ -235,14 +235,13 @@ test('Protect against `data` being undefined', function (t) {
 })
 
 test('Support thunks', function (t) {
-  var tree = h('div', [
-    thunk('numbers', view, 1, 2, 3)
-  ])
-  function view (x, y, z) {
-    return h('h1#magic', `${x}, ${y}, ${z}`)
+  var vnode = thunk('span', numberInSpan, [22])
+
+  function numberInSpan (n) {
+    return h('span', 'Number is ' + n)
   }
 
-  t.equal(toHTML(tree), '<div><h1 id="magic">1, 2, 3</h1></div>')
+  t.equal(toHTML(vnode), '<span>Number is 22</span>')
 
   t.end()
 })
