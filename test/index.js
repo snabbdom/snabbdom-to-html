@@ -43,6 +43,8 @@ test('Modules', function (t) {
   var vnode
   var html
   var renderToString = init([
+    require('../src/modules/class'),
+    require('../src/modules/props'),
     require('../src/modules/attributes'),
     require('../src/modules/style')
   ])
@@ -155,7 +157,7 @@ test('Modules', function (t) {
       '</g>' +
     '</svg>'
   vnode = h('svg', {
-    props: {
+    attrs: {
       width: '92',
       height: '38',
       viewBox: '0 0 92 38',
@@ -165,7 +167,7 @@ test('Modules', function (t) {
   }, [
     h('title', 'Balls'),
     h('g', {
-      props: {
+      attrs: {
         fill: 'none',
         'fill-rule': 'evenodd',
         stroke: '#979797',
@@ -208,7 +210,7 @@ test('Modules', function (t) {
 
   vnode = h('p.yes.no', {
     attrs: {
-      className: 'yes another'
+      class: 'yes another'
     }
   }, 'Text')
   t.equal(renderToString(vnode), '<p class="yes another">Text</p>', 'class 3')
@@ -216,7 +218,7 @@ test('Modules', function (t) {
   // altogether "randomly"
 
   vnode = h('h1#happy.regular', { props: { title: 'Cheers' } }, 'Happy Birthday')
-  t.equal(renderToString(vnode), '<h1 id="happy" title="Cheers" class="regular">Happy Birthday</h1>', 'altogether')
+  t.equal(renderToString(vnode), '<h1 id="happy" class="regular" title="Cheers">Happy Birthday</h1>', 'altogether')
 
   t.end()
 })

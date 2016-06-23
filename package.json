@@ -29,7 +29,7 @@
     "lodash.escape": "^3.0.0",
     "lodash.forown": "^3.0.2",
     "lodash.kebabcase": "^3.0.1",
-    "lodash.union": "^3.1.0",
+    "object-assign": "^4.1.0",
     "parse-sel": "^1.0.0"
   },
   "devDependencies": {

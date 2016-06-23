@@ -1,17 +1,28 @@
 
 var parseSelector = require('parse-sel')
+var createAttributes = require('./attributes')
 var VOID_ELEMENTS = require('./void-elements')
 var CONTAINER_ELEMENTS = require('./container-elements')
 
 module.exports = function init (modules) {
-  function parse (data) {
-    return modules
-      .reduce(function (arr, fn) {
-        arr.push(fn(data))
-        return arr
-      }, [])
-      .filter(function (result) {
-        return result !== ''
+  function parse (vnode, node) {
+    var attributes = createAttributes()
+
+    // These *can* be overwritten by modules
+    // because that’s what happens in snabbdom
+    attributes('id', node.id)
+    attributes('class', node.className)
+
+    modules.forEach(function (fn, index) {
+      fn(vnode, attributes)
+    })
+
+    return attributes()
+      .filter(function (attr) {
+        return attr.value !== ''
+      })
+      .map(function (attr) {
+        return attr.key + '="' + attr.value + '"'
       })
   }
 
@@ -27,8 +38,9 @@ module.exports = function init (modules) {
       vnode = vnode.data.fn.apply(null, vnode.data.args)
     }
 
-    var tagName = parseSelector(vnode.sel).tagName
-    var attributes = parse(vnode)
+    var node = parseSelector(vnode.sel)
+    var tagName = node.tagName
+    var attributes = parse(vnode, node)
     var svg = vnode.data.ns === 'http://www.w3.org/2000/svg'
     var tag = []
 
@@ -54,7 +66,7 @@ module.exports = function init (modules) {
           tag.push(renderToString(child))
         })
       }
-      tag.push(`</${tagName}>`)
+      tag.push('</' + tagName + '>')
     }
 
     return tag.join('')
