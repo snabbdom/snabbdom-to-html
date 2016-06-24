@@ -1,6 +1,6 @@
 
 var test = require('tape')
-var createAttributes = require('../src/attributes')
+var createAttributes = require('../attributes')
 
 test('Attributes helper', function (t) {
   var attributes = createAttributes()

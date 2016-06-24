@@ -2,8 +2,9 @@
 var test = require('tape')
 var h = require('snabbdom/h')
 var thunk = require('snabbdom/thunk')
-var toHTML = require('../src')
-var init = require('../src/init')
+var toHTML = require('../')
+var init = require('../init')
+var modules = require('../modules')
 
 test('Main export', function (t) {
   t.equal(typeof toHTML, 'function', 'is function')
@@ -43,10 +44,10 @@ test('Modules', function (t) {
   var vnode
   var html
   var renderToString = init([
-    require('../src/modules/class'),
-    require('../src/modules/props'),
-    require('../src/modules/attributes'),
-    require('../src/modules/style')
+    modules.class,
+    modules.props,
+    modules.attributes,
+    modules.style
   ])
 
   // style

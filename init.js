@@ -1,8 +1,8 @@
 
 var parseSelector = require('parse-sel')
 var createAttributes = require('./attributes')
-var VOID_ELEMENTS = require('./void-elements')
-var CONTAINER_ELEMENTS = require('./container-elements')
+var VOID_ELEMENTS = require('./elements').VOID
+var CONTAINER_ELEMENTS = require('./elements').CONTAINER
 
 module.exports = function init (modules) {
   function parse (vnode, node) {
