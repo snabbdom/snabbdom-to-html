@@ -32,9 +32,12 @@ This library is built replicating the modular approach used in Snabbdom. So you 
 var h = require('snabbdom/h')
 
 var init = require('snabbdom-to-html/init')
+var modules = require('snabbdom-to-html/modules')
 var toHTML = init([
-  require('snabbdom-to-html/modules/attributes'),
-  require('snabbdom-to-html/modules/style')
+  modules.class,
+  modules.props,
+  modules.attributes,
+  modules.style
 ])
 
 var output = toHTML(
@@ -45,17 +48,16 @@ console.log(output)
 // => <div style="color: lime">over the lazy fox</div>
 ```
 
-The `init` function accepts an array of functions (modules). Modules have the following signature: `(vnode) => String`. And this output string represents a part of the HTML opening tag, e.g. `class="foo" data-bar="baz"`.
+The `init` function accepts an array of functions (modules). Modules have the following signature: `(vnode, attributes) => undefined`, where `attributes` is a setter/getter kind of function.
 
-The built-in modules are:
+You can do `attributes(key, value)` to set an attribute, `attributes(key)` will return that key’s value (or `null` if it doesn’t exist). Calling `attributes()` with no arguments will return an array with the current attributes as `{ key, value }` objects. You can check out the built-in modules to get the idea.
 
-#### attributes (`snabbdom-to-html/modules/attributes`)
+The built-in modules are available from `snabbdom-to-html/modules`, and these are:
 
-Takes care of attributes (and `props`), including classes.
-
-#### styles (`snabbdom-to-html/modules/style`)
-
-Yes, takes care of styles.
+- `attributes`
+- `class`
+- `props`
+- `style`
 
 ## License
 
