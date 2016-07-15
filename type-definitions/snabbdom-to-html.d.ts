@@ -1,7 +1,7 @@
 import {VNode} from "snabbdom";
 
 export interface Module {
-  (vnode: VNode): string;
+  (vnode: VNode, attributes: (key: string, value: string) => void): void;
 }
 
 declare module "snabbdom-to-html" {
@@ -12,9 +12,37 @@ declare module "snabbdom-to-html/init" {
   export default function init (modules: Module[]): (vnode: VNode) => string;
 }
 
+export interface ModuleIndex {
+  class: Module;
+  props: Module;
+  attributes: Module;
+  style: Module;
+}
+
+declare module "snabbdom-to-html/modules" {
+  let modules: ModuleIndex;
+  export = modules
+}
+
+declare module "snabbdom-to-html/modules/index" {
+  let modules: ModuleIndex;
+  export = modules
+}
+
 declare module "snabbdom-to-html/modules/attributes" {
   let attrModule: Module;
   export = attrModule;
+}
+
+declare module "snabbdom-to-html/modules/class" {
+  let classModule: Module;
+  export = classModule;
+}
+
+
+declare module "snabbdom-to-html-modules/props" {
+  let propsModule: Module;
+  export = propsModule;
 }
 
 declare module "snabbdom-to-html/modules/style" {
