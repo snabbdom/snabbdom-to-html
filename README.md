@@ -59,6 +59,10 @@ The built-in modules are available from `snabbdom-to-html/modules`, and these ar
 - `props`
 - `style`
 
+## Support
+
+This is tested against Node.js 4.x and up. If you need to run this in the browser you might need to include something like [`es6-shim`](https://github.com/paulmillr/es6-shim) to ensure `Map` support. 
+
 ## License
 
 MIT
