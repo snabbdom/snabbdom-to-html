@@ -49,6 +49,6 @@ module.exports = function propsModule (vnode, attributes) {
       key = 'class'
     }
 
-    attributes(key.toLowerCase(), escape(value))
+    attributes.set(key.toLowerCase(), escape(value))
   })
 }

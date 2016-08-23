@@ -14,6 +14,6 @@ module.exports = function classModule (vnode, attributes) {
   })
 
   if (values.length) {
-    attributes('class', values.join(' '))
+    attributes.set('class', values.join(' '))
   }
 }

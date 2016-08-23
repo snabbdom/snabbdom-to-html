@@ -1,29 +1,27 @@
 
 var parseSelector = require('parse-sel')
-var createAttributes = require('./attributes')
 var VOID_ELEMENTS = require('./elements').VOID
 var CONTAINER_ELEMENTS = require('./elements').CONTAINER
 
 module.exports = function init (modules) {
   function parse (vnode, node) {
-    var attributes = createAttributes()
-
-    // These *can* be overwritten by modules
-    // because that’s what happens in snabbdom
-    attributes('id', node.id)
-    attributes('class', node.className)
+    var result = []
+    var attributes = new Map([
+      // These can be overwritten because that’s what happens in snabbdom
+      ['id', node.id],
+      ['class', node.className]
+    ])
 
     modules.forEach(function (fn, index) {
       fn(vnode, attributes)
     })
+    attributes.forEach(function (value, key) {
+      if (value && value !== '') {
+        result.push(key + '="' + value + '"')
+      }
+    })
 
-    return attributes()
-      .filter(function (attr) {
-        return attr.value !== ''
-      })
-      .map(function (attr) {
-        return attr.key + '="' + attr.value + '"'
-      })
+    return result.join(' ')
   }
 
   return function renderToString (vnode) {
@@ -49,7 +47,7 @@ module.exports = function init (modules) {
     // Open tag
     tag.push('<' + tagName)
     if (attributes.length) {
-      tag.push(' ' + attributes.join(' '))
+      tag.push(' ' + attributes)
     }
     if (svg && CONTAINER_ELEMENTS[tagName] !== true) {
       tag.push(' /')

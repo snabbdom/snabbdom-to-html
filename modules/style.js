@@ -23,6 +23,6 @@ module.exports = function styleModule (vnode, attributes) {
   })
 
   if (values.length) {
-    attributes('style', values.join('; '))
+    attributes.set('style', values.join('; '))
   }
 }
