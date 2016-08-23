@@ -8,6 +8,6 @@ module.exports = function attrsModule (vnode, attributes) {
   var attrs = vnode.data.attrs || {}
 
   forOwn(attrs, function (value, key) {
-    attributes(key, escape(value))
+    attributes.set(key, escape(value))
   })
 }

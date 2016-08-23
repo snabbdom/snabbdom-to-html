@@ -48,9 +48,9 @@ console.log(output)
 // => <div style="color: lime">over the lazy fox</div>
 ```
 
-The `init` function accepts an array of functions (modules). Modules have the following signature: `(vnode, attributes) => undefined`, where `attributes` is a setter/getter kind of function.
+The `init` function accepts an array of functions (modules). Modules have the following signature: `(vnode, attributes) => undefined`, where `attributes` is an [ES2015 Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) instance.
 
-You can do `attributes(key, value)` to set an attribute, `attributes(key)` will return that key’s value (or `null` if it doesn’t exist). Calling `attributes()` with no arguments will return an array with the current attributes as `{ key, value }` objects. You can check out the built-in modules to get the idea.
+You can do `attributes.set(key, value)`, `attributes.get(key)` and `attributes.delete(key)` and so on. You can check out the built-in modules to get the idea.
 
 The built-in modules are available from `snabbdom-to-html/modules`, and these are:
 
