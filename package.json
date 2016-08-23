@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-to-html",
-  "version": "2.1.3",
+  "version": "3.0.0-beta.0",
   "description": "Render Snabbdom Vnodes to HTML strings",
   "main": "index.js",
   "typeings": "snabbdom-to-html.d.ts",
