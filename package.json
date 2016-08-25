@@ -6,7 +6,8 @@
   "typeings": "snabbdom-to-html.d.ts",
   "scripts": {
     "pretest": "standard",
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "disc": "browserify ./index.js --full-paths | discify --open"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,8 @@
     "parse-sel": "^1.0.0"
   },
   "devDependencies": {
+    "browserify": "^13.1.0",
+    "disc": "^1.3.2",
     "snabbdom": "^0.5.1",
     "standard": "^5.4.1",
     "tape": "^4.2.2"
