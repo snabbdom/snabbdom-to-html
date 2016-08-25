@@ -1,7 +1,7 @@
 
-var forOwn = require('lodash.forown')
-var remove = require('lodash.remove')
-var uniq = require('lodash.uniq')
+var forOwn = require('lodash/forown')
+var remove = require('lodash/remove')
+var uniq = require('lodash/uniq')
 
 // data.class
 
