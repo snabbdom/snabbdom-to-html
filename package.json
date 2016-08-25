@@ -26,11 +26,7 @@
   },
   "homepage": "https://github.com/acstll/snabbdom-to-html#readme",
   "dependencies": {
-    "lodash.escape": "^3.0.0",
-    "lodash.forown": "^3.0.2",
-    "lodash.kebabcase": "^3.0.1",
-    "lodash.remove": "^4.7.0",
-    "lodash.uniq": "^4.5.0",
+    "lodash": "^4.15.0",
     "object-assign": "^4.1.0",
     "parse-sel": "^1.0.0"
   },
