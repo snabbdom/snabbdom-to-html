@@ -209,12 +209,21 @@ test('Modules', function (t) {
   }, 'Text')
   t.equal(renderToString(vnode), '<p class="yes">Text</p>', 'class 2')
 
+  // classList behaviour
   vnode = h('p.yes.no', {
-    attrs: {
-      class: 'yes another'
+    class: {
+      no: false,
+      else: true
     }
   }, 'Text')
-  t.equal(renderToString(vnode), '<p class="yes another">Text</p>', 'class 3')
+  t.equal(renderToString(vnode), '<p class="yes else">Text</p>', 'class 3')
+
+  vnode = h('p.yes.no', {
+    attrs: {
+      class: 'something else'
+    }
+  }, 'Text')
+  t.equal(renderToString(vnode), '<p class="something else">Text</p>', 'class 4')
 
   // altogether "randomly"
 
