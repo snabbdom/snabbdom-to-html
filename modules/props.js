@@ -1,6 +1,6 @@
 
-var forOwn = require('lodash/forown')
-var escape = require('lodash/escape')
+var forOwn = require('lodash.forown')
+var escape = require('lodash.escape')
 
 // https://developer.mozilla.org/en-US/docs/Web/API/element
 var omit = [
