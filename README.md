@@ -10,12 +10,6 @@ With [`npm`](https://www.npmjs.com/) do:
 npm install snabbdom-to-html
 ```
 
-or to test the latest beta:
-
-```bash
-npm install snabbdom-to-html@beta
-```
-
 ## Usage
 
 ```js
