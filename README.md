@@ -4,8 +4,6 @@ Render [Snabbdom](https://github.com/paldepind/snabbdom) Vnode’s to HTML strin
 
 ## Install
 
-<p><mark>Beta version `3` is out!</mark></p>
-
 With [`npm`](https://www.npmjs.com/) do:
 
 ```bash
