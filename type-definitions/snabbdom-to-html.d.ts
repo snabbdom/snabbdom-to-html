@@ -5,11 +5,13 @@ export interface Module {
 }
 
 declare module "snabbdom-to-html" {
-  export default function toHTML(vnode: VNode): string;
+  function toHTML(vnode: VNode): string;
+  export = toHTML
 }
 
 declare module "snabbdom-to-html/init" {
-  export default function init (modules: Module[]): (vnode: VNode) => string;
+  function init (modules: Module[]): (vnode: VNode) => string;
+  export = init
 }
 
 export interface ModuleIndex {
@@ -38,7 +40,6 @@ declare module "snabbdom-to-html/modules/class" {
   let classModule: Module;
   export = classModule;
 }
-
 
 declare module "snabbdom-to-html-modules/props" {
   let propsModule: Module;
