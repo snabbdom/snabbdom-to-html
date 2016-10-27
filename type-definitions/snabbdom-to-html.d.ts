@@ -41,7 +41,7 @@ declare module "snabbdom-to-html/modules/class" {
   export = classModule;
 }
 
-declare module "snabbdom-to-html-modules/props" {
+declare module "snabbdom-to-html/modules/props" {
   let propsModule: Module;
   export = propsModule;
 }
