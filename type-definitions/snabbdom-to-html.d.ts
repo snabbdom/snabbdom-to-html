@@ -1,7 +1,7 @@
 import {VNode} from "snabbdom";
 
 export interface Module {
-  (vnode: VNode, attributes: Map<string, string>): void;
+  (vnode: VNode, attributes: Map<string, number | string>): void;
 }
 
 declare module "snabbdom-to-html" {
