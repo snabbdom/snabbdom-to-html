@@ -3,7 +3,6 @@
   "version": "3.0.0",
   "description": "Render Snabbdom Vnodes to HTML strings",
   "main": "index.js",
-  "typings": "./type-definitions/snabbdom-to-html.d.ts",
   "scripts": {
     "pretest": "standard",
     "test": "tape test/*.js",
