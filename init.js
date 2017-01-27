@@ -44,6 +44,10 @@ module.exports = function init (modules) {
     var svg = vnode.data.ns === 'http://www.w3.org/2000/svg'
     var tag = []
 
+    if (tagName === '!') {
+      return '<!--' + vnode.text + '-->'
+    }
+
     // Open tag
     tag.push('<' + tagName)
     if (attributes.length) {
