@@ -14,6 +14,7 @@ exports.CONTAINER = {
   'svg': true,
   'switch': true,
   'symbol': true,
+  'text': true,
 
   // http://www.w3.org/TR/SVG/intro.html#TermDescriptiveElement
   'desc': true,

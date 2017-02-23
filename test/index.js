@@ -184,6 +184,12 @@ test('Modules', function (t) {
   ])
   t.equal(renderToString(vnode), html, 'svg')
 
+  html = '<svg><text>Hello world</text></svg>'
+  vnode = h('svg', [
+    h('text', 'Hello world')
+  ])
+  t.equal(renderToString(vnode), html, 'svg')
+
   vnode = h('label', {
     props: {
       htmlFor: 'beep'
