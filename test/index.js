@@ -37,6 +37,12 @@ test('No modules', function (t) {
   ])
   t.equal(renderToString(vnode), '<div><p>Paragraph 1</p><p><img></p><ul><li>1</li><li>2</li><li>3</li></ul></div>', 'nesting')
 
+  vnode = h('div', [
+    undefined,
+    null
+  ])
+  t.equal(renderToString(vnode), '<div></div>', 'null / undefined')
+
   vnode = h('!', 'comment text')
   t.equal(renderToString(vnode), '<!--comment text-->', 'comment')
 

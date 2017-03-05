@@ -25,6 +25,10 @@ module.exports = function init (modules) {
   }
 
   return function renderToString (vnode) {
+    if (typeof vnode === 'undefined' || vnode === null) {
+      return ''
+    }
+
     if (!vnode.sel && vnode.text) {
       return vnode.text
     }
