@@ -264,3 +264,10 @@ test('Support thunks', function (t) {
 
   t.end()
 })
+
+test('custom css properties', function (t) {
+  t.equal(
+    toHTML(h('div', {style: {'--customColor': '#000'}})),
+    `<div style="--custom-color: #000"></div>`
+  )
+})
