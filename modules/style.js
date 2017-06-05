@@ -18,7 +18,7 @@ module.exports = function styleModule (vnode, attributes) {
   forOwn(style, function (value, key) {
     // omit hook objects
     if (typeof value === 'string' || typeof value === 'number') {
-      const kebabKey = kebabCase(key)
+      var kebabKey = kebabCase(key)
       values.push((key.match(/^--.*/) ? '--' + kebabKey : kebabKey) + ': ' + escape(value))
     }
   })
