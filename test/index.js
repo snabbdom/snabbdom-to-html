@@ -264,3 +264,11 @@ test('Support thunks', function (t) {
 
   t.end()
 })
+
+test('Custom CSS properties', function (t) {
+  var vnode = h('div', {style: {'--customColor': '#000'}})
+
+  t.equal(toHTML(vnode), '<div style="--custom-color: #000"></div>')
+
+  t.end()
+})
