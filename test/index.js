@@ -1,10 +1,11 @@
 
 var test = require('tape')
-var h = require('snabbdom/h')
-var thunk = require('snabbdom/thunk')
+var snabbdom = require('snabbdom')
 var toHTML = require('../')
 var init = require('../init')
 var modules = require('../modules')
+var h = snabbdom.h
+var thunk = snabbdom.thunk
 
 test('Main export', function (t) {
   t.equal(typeof toHTML, 'function', 'is function')
