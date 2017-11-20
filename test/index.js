@@ -280,7 +280,7 @@ test('Custom CSS properties', function (t) {
   t.end()
 })
 
-test('Escape HTML in the text content', function (t) {
+test('Escape HTML in text', function (t) {
   var vnode = h('div', ['<p></p>'])
 
   t.equal(toHTML(vnode), '<div>&lt;p&gt;&lt;/p&gt;</div>')
