@@ -57,7 +57,8 @@ test('Modules', function (t) {
     modules.class,
     modules.props,
     modules.attributes,
-    modules.style
+    modules.style,
+    modules.dataset
   ])
 
   // style
@@ -240,6 +241,16 @@ test('Modules', function (t) {
     }
   }, 'Text')
   t.equal(renderToString(vnode), '<p class="something else">Text</p>', 'class 4')
+
+  // dataset
+
+  vnode = h('div', {
+    dataset: {
+      foo: 'bar',
+      answer: 42
+    }
+  }, '')
+  t.equal(renderToString(vnode), '<div data-foo="bar" data-answer="42"></div>', 'dataset 1')
 
   // altogether "randomly"
 

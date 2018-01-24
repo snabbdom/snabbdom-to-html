@@ -6,7 +6,8 @@ var toHTML = init([
   modules.attributes,
   modules.props,
   modules.class,
-  modules.style
+  modules.style,
+  modules.dataset
 ])
 
 module.exports = toHTML
