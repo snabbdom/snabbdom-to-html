@@ -13,7 +13,7 @@ npm install snabbdom-to-html
 ## Usage
 
 ```js
-var h = require('snabbdom/h')
+var h = require('snabbdom/h').default // helper function for creating vnodes
 var toHTML = require('snabbdom-to-html')
 
 var output = toHTML(
@@ -29,7 +29,7 @@ console.log(output)
 This library is built replicating the modular approach used in Snabbdom. So you can do the following if you need to implement any custom functionality.
 
 ```js
-var h = require('snabbdom/h')
+var h = require('snabbdom/h').default // helper function for creating vnodes
 
 var init = require('snabbdom-to-html/init')
 var modules = require('snabbdom-to-html/modules')
