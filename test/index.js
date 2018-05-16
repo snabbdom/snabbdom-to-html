@@ -302,3 +302,20 @@ test('Escape HTML in text', function (t) {
 
   t.end()
 })
+
+test('Empty string in children', function (t) {
+  var vnode = h('span', [''])
+  var htmlString = '<span></span>'
+
+  t.equal(toHTML(vnode), htmlString)
+
+  vnode = h('span', [])
+
+  t.equal(toHTML(vnode), htmlString)
+
+  vnode = h('span', '')
+
+  t.equal(toHTML(vnode), htmlString)
+
+  t.end()
+})

@@ -30,7 +30,7 @@ module.exports = function init (modules) {
       return ''
     }
 
-    if (!vnode.sel && vnode.text) {
+    if (!vnode.sel && typeof vnode.text === 'string') {
       return escape(vnode.text)
     }
 
