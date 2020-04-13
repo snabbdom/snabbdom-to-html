@@ -319,3 +319,19 @@ test('Empty string in children', function (t) {
 
   t.end()
 })
+
+test('Boolean attributes', function (t) {
+  // truthy case
+  var vnode = h('input', { props: { type: 'checkbox', checked: true } })
+  var htmlString = '<input type="checkbox" checked="checked">'
+
+  t.equal(toHTML(vnode), htmlString)
+
+  // falsy case
+  vnode = h('input', { props: { type: 'checkbox', checked: false } })
+  htmlString = '<input type="checkbox">'
+
+  t.equal(toHTML(vnode), htmlString)
+
+  t.end()
+})
