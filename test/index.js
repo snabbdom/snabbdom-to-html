@@ -153,6 +153,16 @@ test('Modules', function (t) {
   }, 'Github')
   t.equal(renderToString(vnode), '<a id="github" class="a b" href="http://github.com" target="_blank">Github</a>', 'attrs 2')
 
+  vnode = h('img', {
+    attrs: {
+      src: 'https://test.com'
+    },
+    class: {
+      selected: 'true'
+    }
+  })
+  t.equal(renderToString(vnode), '<img class="selected" src="https://test.com">', 'class truthy check')
+
   vnode = h('a#github', {
     attrs: {
       id: 'overridden',

@@ -14,7 +14,7 @@ module.exports = function classModule (vnode, attributes) {
   existing = existing.length > 0 ? existing.split(' ') : []
 
   forOwn(classes, function (value, key) {
-    if (value === true) {
+    if (value) {
       _add.push(key)
     } else {
       _remove.push(key)
