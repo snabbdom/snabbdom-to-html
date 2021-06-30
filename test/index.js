@@ -79,7 +79,7 @@ test('Modules', function (t) {
   })
   t.equal(renderToString(vnode), '<div style="color: red; font-size: 2em; line-height: 1.3"></div>', 'style 2')
 
-    // `delayed` and hook properties
+  // `delayed` and hook properties
 
   vnode = h('div', {
     style: {
@@ -294,7 +294,7 @@ test('Support thunks', function (t) {
 })
 
 test('Custom CSS properties', function (t) {
-  var vnode = h('div', {style: {'--customColor': '#000'}})
+  var vnode = h('div', { style: { '--customColor': '#000' } })
 
   t.equal(toHTML(vnode), '<div style="--custom-color: #000"></div>')
 
