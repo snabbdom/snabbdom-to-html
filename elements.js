@@ -15,6 +15,8 @@ exports.CONTAINER = {
   'switch': true,
   'symbol': true,
   'text': true,
+  'clipPath': true,
+  'linearGradient': true,
 
   // http://www.w3.org/TR/SVG/intro.html#TermDescriptiveElement
   'desc': true,

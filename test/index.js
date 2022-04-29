@@ -345,3 +345,23 @@ test('Boolean attributes', function (t) {
 
   t.end()
 })
+
+test('svg container elements', function (t) {
+  var vnode = h('svg',
+    { attrs: { xmlns: 'http://www.w3.org/2000/svg' } },
+    [h('defs', [h('clipPath', [h('rect', { attrs: { x: 0, y: 1, width: 2, height: 3 } })])])]
+  )
+  var htmlString = '<svg xmlns="http://www.w3.org/2000/svg"><defs><clipPath><rect x="0" y="1" width="2" height="3" /></clipPath></defs></svg>'
+
+  t.equal(toHTML(vnode), htmlString)
+
+  vnode = h('svg', [
+    h('linearGradient', [
+      h('stop')
+    ])
+  ])
+  htmlString = '<svg><linearGradient><stop /></linearGradient></svg>'
+  t.equal(toHTML(vnode), htmlString)
+
+  t.end()
+})
