@@ -18,6 +18,9 @@ exports.CONTAINER = {
   'clipPath': true,
   'linearGradient': true,
 
+  'style': true,
+  'script': true,
+
   // http://www.w3.org/TR/SVG/intro.html#TermDescriptiveElement
   'desc': true,
   'metadata': true,

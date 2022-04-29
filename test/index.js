@@ -208,6 +208,18 @@ test('Modules', function (t) {
   ])
   t.equal(renderToString(vnode), html, 'svg')
 
+  html = '<svg><style>.foo: { fill: red; }</style></svg>'
+  vnode = h('svg', [
+    h('style', '.foo: { fill: red; }')
+  ])
+  t.equal(renderToString(vnode), html, 'svg style')
+
+  html = '<svg><script>var a = 42;</script></svg>'
+  vnode = h('svg', [
+    h('script', 'var a = 42;')
+  ])
+  t.equal(renderToString(vnode), html, 'svg script')
+
   vnode = h('label', {
     props: {
       htmlFor: 'beep'
